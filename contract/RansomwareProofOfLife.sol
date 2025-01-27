@@ -69,7 +69,7 @@ contract RansomwareProofOfLife {
             emit SampleDecryptionKeyRevealed(victimID, sampleIDs[i], decryptionKeys[i]);
         }
     }
-    
+
     function payRansom(string memory victimID, bytes32 commitment) external payable onlyVictim(victimID) {
         require(msg.value >= ransomAmount, "Insufficient ransom amount");
         require(victims[victimID].paid ==false, "Ransom already paid");
