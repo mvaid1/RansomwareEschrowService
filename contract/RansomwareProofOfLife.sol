@@ -86,7 +86,7 @@ contract RansomwareProofOfLife {
         payable(attacker).transfer(address(this).balance);
         
     }
-    
+
     function refundRansom(string memory victimID) external onlyVictim(victimID) {
         require(victims[victimID].paid, "Ransom not paid");
         require(block.timestamp >= victims[victimID].paymentTimestamp + DEADLINE_DURATION, "Deadline not reached");
@@ -95,4 +95,5 @@ contract RansomwareProofOfLife {
         victims[victimID].paid = false;
         delete victims[victimID];
     }
+    
 }
